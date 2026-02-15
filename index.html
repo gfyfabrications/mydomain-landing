@@ -1,20 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Coming Soon</title>
-  <style>
-    body { 
-      font-family: Arial; 
-      text-align: center; 
-      padding-top: 100px; 
-      background: #111; 
-      color: white;
-    }
-    h1 { font-size: 48px; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Pump Paintball | Coming Soon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Industrial Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: url('industrial-background.jpg') no-repeat center center/cover;
+            font-family: 'Oswald', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f2f2f2;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Dark Grit Overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9));
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 64px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #ff3c00;
+            text-shadow: 0 0 15px rgba(255, 60, 0, 0.7);
+        }
+
+        .tagline {
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: #ff3c00;
+            margin: 20px auto 30px auto;
+        }
+
+        /* Animated Loading Bar */
+        .loader {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .loader::after {
+            content: "";
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: #ff3c00;
+            animation: load 2s infinite;
+        }
+
+        @keyframes load {
+            0% { margin-left: -40%; }
+            100% { margin-left: 100%; }
+        }
+
+        .email-form {
+            margin-top: 20px;
+        }
+
+        input[type="email"] {
+            padding: 12px;
+            width: 260px;
+            border: 2px solid #ff3c00;
+            background: transparent;
+            color: white;
+            outline: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            background: #ff3c00;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #ff1e00;
+            box-shadow: 0 0 10px #ff3c00;
+        }
+
+        .socials {
+            margin-top: 40px;
+        }
+
+        .socials a {
+            color: #aaa;
+            text-decoration: none;
+            margin: 0 15px;
+            letter-spacing: 2px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            color: #ff3c00;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 42px;
+            }
+
+            input[type="email"] {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <h1>Coming Soon</h1>
-  <p>Our new website is launching soon.</p>
+
+    <div class="container">
+        <h1>Pump Paintball</h1>
+        <div class="divider"></div>
+        <p class="tagline">Old School. No Batteries. Just Skill.</p>
+
+        <div class="loader"></div>
+
+        <p>We're building something built for true pump players.  
+        Stay locked in.</p>
+
+        <form class="email-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Get Notified</button>
+        </form>
+
+        <div class="socials">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">YouTube</a>
+        </div>
+    </div>
+
 </body>
 </html>
