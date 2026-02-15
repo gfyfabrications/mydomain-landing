@@ -1,185 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Pump Paintball | Coming Soon</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Pump Paintball | Coming Soon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Industrial Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            height: 100vh;
-            background: url('industrial-background.jpg') no-repeat center center/cover;
-            font-family: 'Oswald', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #f2f2f2;
-            text-align: center;
-            position: relative;
-        }
+body {
+    height: 100vh;
+    background: url('industrial-background.jpg') no-repeat center center/cover;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f2f2f2;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        /* Dark Grit Overlay */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9));
-        }
+/* Dark overlay */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 1;
+}
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            padding: 30px;
-        }
+/* Paint Splatter Animation */
+.splatter {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #ff3c00 0%, #8b0000 70%);
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: splatterMove 10s infinite ease-in-out alternate;
+    filter: blur(20px);
+}
 
-        h1 {
-            font-size: 64px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            color: #ff3c00;
-            text-shadow: 0 0 15px rgba(255, 60, 0, 0.7);
-        }
+.splatter:nth-child(1) {
+    top: 10%;
+    left: 15%;
+    animation-delay: 0s;
+}
 
-        .tagline {
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin-bottom: 40px;
-            opacity: 0.8;
-        }
+.splatter:nth-child(2) {
+    bottom: 20%;
+    right: 20%;
+    animation-delay: 3s;
+}
 
-        .divider {
-            width: 80px;
-            height: 3px;
-            background: #ff3c00;
-            margin: 20px auto 30px auto;
-        }
+.splatter:nth-child(3) {
+    top: 50%;
+    right: 10%;
+    animation-delay: 6s;
+}
 
-        /* Animated Loading Bar */
-        .loader {
-            width: 100%;
-            height: 6px;
-            background: #333;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
+@keyframes splatterMove {
+    0% { transform: scale(1) translateY(0); }
+    100% { transform: scale(1.4) translateY(-40px); }
+}
 
-        .loader::after {
-            content: "";
-            display: block;
-            width: 40%;
-            height: 100%;
-            background: #ff3c00;
-            animation: load 2s infinite;
-        }
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 30px;
+}
 
-        @keyframes load {
-            0% { margin-left: -40%; }
-            100% { margin-left: 100%; }
-        }
+h1 {
+    font-size: 64px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #ff3c00;
+    text-shadow: 0 0 20px rgba(255, 60, 0, 0.8);
+}
 
-        .email-form {
-            margin-top: 20px;
-        }
+.divider {
+    width: 100px;
+    height: 4px;
+    background: #ff3c00;
+    margin: 20px auto 30px auto;
+}
 
-        input[type="email"] {
-            padding: 12px;
-            width: 260px;
-            border: 2px solid #ff3c00;
-            background: transparent;
-            color: white;
-            outline: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.tagline {
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    opacity: 0.8;
+}
 
-        button {
-            padding: 12px 20px;
-            border: none;
-            background: #ff3c00;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s ease;
-        }
+.loader {
+    width: 100%;
+    height: 6px;
+    background: #222;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
 
-        button:hover {
-            background: #ff1e00;
-            box-shadow: 0 0 10px #ff3c00;
-        }
+.loader::after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 100%;
+    background: #ff3c00;
+    animation: load 2s infinite;
+}
 
-        .socials {
-            margin-top: 40px;
-        }
+@keyframes load {
+    0% { margin-left: -40%; }
+    100% { margin-left: 100%; }
+}
 
-        .socials a {
-            color: #aaa;
-            text-decoration: none;
-            margin: 0 15px;
-            letter-spacing: 2px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
+form {
+    margin-top: 20px;
+}
 
-        .socials a:hover {
-            color: #ff3c00;
-        }
+input[type="email"] {
+    padding: 14px;
+    width: 280px;
+    border: 2px solid #ff3c00;
+    background: transparent;
+    color: white;
+    outline: none;
+    letter-spacing: 1px;
+}
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 42px;
-            }
+button {
+    padding: 14px 25px;
+    border: none;
+    background: #ff3c00;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
 
-            input[type="email"] {
-                width: 100%;
-                margin-bottom: 10px;
-            }
+button:hover {
+    background: #ff1e00;
+    box-shadow: 0 0 15px #ff3c00;
+}
 
-            button {
-                width: 100%;
-            }
-        }
-    </style>
+@media (max-width: 600px) {
+    h1 { font-size: 42px; }
+    input[type="email"], button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Pump Paintball</h1>
-        <div class="divider"></div>
-        <p class="tagline">Old School. No Batteries. Just Skill.</p>
+<!-- Animated Paint Splatter Layers -->
+<div class="splatter"></div>
+<div class="splatter"></div>
+<div class="splatter"></div>
 
-        <div class="loader"></div>
+<div class="container">
+    <h1>Pump Paintball</h1>
+    <div class="divider"></div>
+    <p class="tagline">Old School. No Batteries. Just Skill.</p>
 
-        <p>We're building something built for true pump players.  
-        Stay locked in.</p>
+    <div class="loader"></div>
 
-        <form class="email-form">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit">Get Notified</button>
-        </form>
+    <p>We’re building something for true pump players.  
+    Be the first to know when we launch.</p>
 
-        <div class="socials">
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-            <a href="#">YouTube</a>
-        </div>
-    </div>
+    <!-- Email Form (Sends to info@gfyfabrications.com) -->
+    <form action="https://formsubmit.co/info@gfyfabrications.com" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        
+        <!-- Disable Captcha -->
+        <input type="hidden" name="_captcha" value="false">
+        
+        <!-- Optional Success Redirect -->
+        <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
+        
+        <button type="submit">Get Notified</button>
+    </form>
+</div>
 
 </body>
 </html>
