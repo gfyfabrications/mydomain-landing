@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
 * {
@@ -92,16 +93,21 @@ form {
     margin-top: 20px;
 }
 
-input[type="text"],
-input[type="email"] {
+input, textarea {
     padding: 14px;
-    width: 280px;
+    width: 300px;
     border: 2px solid #ff3c00;
     background: transparent;
     color: white;
     outline: none;
     letter-spacing: 1px;
     margin-bottom: 15px;
+    font-family: 'Oswald', sans-serif;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
 }
 
 button {
@@ -120,11 +126,16 @@ button:hover {
     box-shadow: 0 0 15px #ff3c00;
 }
 
+.success-message {
+    margin-top: 20px;
+    color: #00ff88;
+    display: none;
+    font-size: 18px;
+}
+
 @media (max-width: 600px) {
     h1 { font-size: 42px; }
-    input[type="text"],
-    input[type="email"],
-    button {
+    input, textarea, button {
         width: 100%;
     }
 }
@@ -143,20 +154,41 @@ button:hover {
     <p>We’re building something for true pump players.  
     Be the first to know when we launch.</p>
 
-    <form action="https://formsubmit.co/ae9d1f948c5d5f13773128a6e60b5cb4" method="POST">
-        
-        <!-- Name Field -->
+    <form id="signup-form">
         <input type="text" name="name" placeholder="Your Name" required>
-
-        <!-- Email Field -->
         <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="comments" placeholder="Comments (optional)"></textarea>
 
-        <!-- Enable CAPTCHA (do NOT disable it) -->
-        <!-- Removed _captcha=false so CAPTCHA stays active -->
+        <div class="g-recaptcha" data-sitekey="6LeZvGwsAAAAAF_vJ_T08-LK3nZC3ON1uIxV1DU_"></div>
 
         <button type="submit">Get Notified</button>
     </form>
+
+    <div class="success-message" id="success-message">
+        You're Locked In. Welcome to the movement.
+    </div>
 </div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbwVaTdfirzYjt4d-W5EMvqV5wc-WrKrp6gAo14vFXydYCCgBLkQ1ARWKf184gxKwSf5mQ/exec";
+const form = document.getElementById("signup-form");
+const successMessage = document.getElementById("success-message");
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(form)
+    })
+    .then(response => {
+        form.style.display = "none";
+        successMessage.style.display = "block";
+        grecaptcha.reset();
+    })
+    .catch(error => alert("Submission failed. Please try again."));
+});
+</script>
 
 </body>
 </html>
