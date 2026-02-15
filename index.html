@@ -26,7 +26,6 @@ body {
     position: relative;
 }
 
-/* Dark overlay */
 body::before {
     content: "";
     position: absolute;
@@ -93,6 +92,7 @@ form {
     margin-top: 20px;
 }
 
+input[type="text"],
 input[type="email"] {
     padding: 14px;
     width: 280px;
@@ -101,6 +101,7 @@ input[type="email"] {
     color: white;
     outline: none;
     letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
 button {
@@ -121,9 +122,10 @@ button:hover {
 
 @media (max-width: 600px) {
     h1 { font-size: 42px; }
-    input[type="email"], button {
+    input[type="text"],
+    input[type="email"],
+    button {
         width: 100%;
-        margin-bottom: 10px;
     }
 }
 </style>
@@ -141,13 +143,18 @@ button:hover {
     <p>We’re building something for true pump players.  
     Be the first to know when we launch.</p>
 
-    <!-- Secure Email Form -->
     <form action="https://formsubmit.co/ae9d1f948c5d5f13773128a6e60b5cb4" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required>
+        
+        <!-- Name Field -->
+        <input type="text" name="name" placeholder="Your Name" required>
 
-    <input type="hidden" name="_template" value="table">
+        <!-- Email Field -->
+        <input type="email" name="email" placeholder="Your Email" required>
 
-    <button type="submit">Get Notified</button>
+        <!-- Enable CAPTCHA (do NOT disable it) -->
+        <!-- Removed _captcha=false so CAPTCHA stays active -->
+
+        <button type="submit">Get Notified</button>
     </form>
 </div>
 
