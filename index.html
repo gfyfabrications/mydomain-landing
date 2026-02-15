@@ -24,7 +24,6 @@ body {
     color: #f2f2f2;
     text-align: center;
     position: relative;
-    overflow: hidden;
 }
 
 /* Dark overlay */
@@ -35,43 +34,8 @@ body::before {
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.88);
     z-index: 1;
-}
-
-/* Paint Splatter Animation */
-.splatter {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, #ff3c00 0%, #8b0000 70%);
-    border-radius: 50%;
-    opacity: 0.15;
-    animation: splatterMove 10s infinite ease-in-out alternate;
-    filter: blur(20px);
-}
-
-.splatter:nth-child(1) {
-    top: 10%;
-    left: 15%;
-    animation-delay: 0s;
-}
-
-.splatter:nth-child(2) {
-    bottom: 20%;
-    right: 20%;
-    animation-delay: 3s;
-}
-
-.splatter:nth-child(3) {
-    top: 50%;
-    right: 10%;
-    animation-delay: 6s;
-}
-
-@keyframes splatterMove {
-    0% { transform: scale(1) translateY(0); }
-    100% { transform: scale(1.4) translateY(-40px); }
 }
 
 .container {
@@ -167,11 +131,6 @@ button:hover {
 
 <body>
 
-<!-- Animated Paint Splatter Layers -->
-<div class="splatter"></div>
-<div class="splatter"></div>
-<div class="splatter"></div>
-
 <div class="container">
     <h1>Pump Paintball</h1>
     <div class="divider"></div>
@@ -182,16 +141,13 @@ button:hover {
     <p>We’re building something for true pump players.  
     Be the first to know when we launch.</p>
 
-    <!-- Email Form (Sends to info@gfyfabrications.com) -->
-    <form action="https://formsubmit.co/info@gfyfabrications.com" method="POST">
+    <!-- Secure Email Form -->
+    <form action="https://formsubmit.co/ae9d1f948c5d5f13773128a6e60b5cb4" method="POST">
         <input type="email" name="email" placeholder="Enter your email" required>
-        
+
         <!-- Disable Captcha -->
         <input type="hidden" name="_captcha" value="false">
-        
-        <!-- Optional Success Redirect -->
-        <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
-        
+
         <button type="submit">Get Notified</button>
     </form>
 </div>
